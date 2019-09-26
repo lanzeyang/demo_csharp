@@ -83,11 +83,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Compile Include="Service References\NCPayService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Workers\AnalyseWechatFansAndUpdateWorker.cs" />
     <Compile Include="Workers\ArrayWorker.cs" />
     <Compile Include="Workers\BillCheckingWorker.cs" />
@@ -105,7 +100,6 @@
     <Compile Include="Workers\JSONWorker.cs" />
     <Compile Include="Workers\ListJsonWorker.cs" />
     <Compile Include="Workers\LoopWorker.cs" />
-    <Compile Include="Workers\NCPayServiceWorker.cs" />
     <Compile Include="Workers\RegxWorker.cs" />
     <Compile Include="Workers\SHA1Worker.cs" />
     <Compile Include="Workers\StringWorker.cs" />
@@ -117,19 +111,6 @@
     <Compile Include="Workers\Worker4HelloJack.cs" />
     <Compile Include="Workers\Worker4HelloWorld.cs" />
     <Compile Include="Workers\XMLWorker.cs" />
-    <None Include="Service References\NCPayService\demo_csharp.NCPayService.PayResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\NCPayService\demo_csharp.NCPayService.QueryResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\NCPayService\NCPayServiceImpl1.wsdl" />
-    <None Include="Service References\NCPayService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\NCPayService\configuration.svcinfo" />
-    <None Include="Service References\NCPayService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -148,22 +129,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <None Include="Service References\NCPayService\NCPayService.wsdl" />
-    <None Include="Service References\NCPayService\NCPayService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\NCPayService\NCPayService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\NCPayService\NCPayService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\NCPayService\NCPayService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\NCPayService\NCPayService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -182,12 +147,6 @@
     <Content Include="Resource\PaymentNotification.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\NCPayService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
