@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading;
 
 namespace demo_csharp.Workers
 {
@@ -17,13 +18,19 @@ namespace demo_csharp.Workers
         private static Func<int, string> returnHello = text => "Hello " + text;
         private static Func<string, string> returnHi = text => "Hi " + text;
 
+        private static Func<int, int> add = value =>
+        {
+            return value += 2;
+        };
+
         public void Do()
         {
-            SaySth<int>(sayHi, 1);
-            SaySth<string>(sayHello, string.Empty);
+            //SaySth<int>(sayHi, 1);
+            //SaySth<string>(sayHello, string.Empty);
 
-            Console.WriteLine(SaySth(returnHello, 1));
-            Console.WriteLine(SaySth(returnHi, "lianzeyang"));
+            //Console.WriteLine(SaySth(returnHello, 1));
+            //Console.WriteLine(SaySth(returnHi, "lianzeyang"));
+            Add(add, 1);
         }
 
         /// <summary>
@@ -165,6 +172,16 @@ namespace demo_csharp.Workers
         private void Show_2(int x, int y)
         {
             Console.WriteLine(x - y);
+        }
+
+        private void Add(Func<int, int> adder, int value)
+        {
+            while (value < 100)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine(value);
+                value = adder(value);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace demo_csharp.Workers
 {
@@ -32,6 +33,26 @@ namespace demo_csharp.Workers
                     Console.WriteLine(student.Name);
                 }
             }
+
+            string response = "\\\"0000031522\"";
+            Console.WriteLine(response);
+
+
+            response = response.Replace("\\\"", "");
+            Console.WriteLine(response);
+
+            string mobilePhone = "13127571386";
+            string mobilePhoneToBeShown = string.Empty;
+            mobilePhoneToBeShown = string.Format("{0}****{1}", mobilePhone.Substring(0, 3), mobilePhone.Substring(7, 4));
+
+            Console.WriteLine(mobilePhoneToBeShown);
+
+            string testString = "\r\nhello word\r\n";
+            Console.WriteLine(testString);
+
+            char[] trimedChars = new char[] { '\r', '\n' };
+
+            Console.WriteLine(testString.Trim(trimedChars));
         }
     }
 }

@@ -22,6 +22,7 @@ namespace demo_csharp.Workers
             result.Add("paySign", "70EA570631E4BB79628FBCA90534C63FF7FADD89");
 
             Console.WriteLine(result.ToString());
+            Console.WriteLine(result["xxx"]);
         }
     }
 }

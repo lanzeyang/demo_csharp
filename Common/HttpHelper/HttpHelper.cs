@@ -94,6 +94,44 @@ namespace Common.HttpHelper
             }
         }
 
+        /// <summary>
+        /// 发送请求
+        /// </summary>
+        /// <param name="url">Url地址</param>
+        /// <param name="method">方法（post或get）</param>
+        /// <param name="method">数据类型</param>
+        /// <param name="requestData">数据</param>
+        public string SendPostHttpRequest(string url, string contentType, string requestData)
+        {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = (v1, v2, v3, v4) => { return true; };
+            WebRequest request = (WebRequest)HttpWebRequest.Create(url);
+            request.Method = "POST";
+            byte[] postBytes = null;
+            request.ContentType = contentType;
+            postBytes = Encoding.UTF8.GetBytes(requestData);
+            request.ContentLength = postBytes.Length;
+            using (Stream outstream = request.GetRequestStream())
+            {
+                outstream.Write(postBytes, 0, postBytes.Length);
+            }
+            string result = string.Empty;
+            using (WebResponse response = request.GetResponse())
+            {
+                if (response != null)
+                {
+                    using (Stream stream = response.GetResponseStream())
+                    {
+                        using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                        {
+                            result = reader.ReadToEnd();
+                        }
+                    }
+
+                }
+            }
+            return result;
+        }
+
         public async Task<byte[]> DoGetByte(string url)
         {
             HttpClientHandler handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };

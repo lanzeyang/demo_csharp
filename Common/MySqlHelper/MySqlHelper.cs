@@ -49,7 +49,16 @@ namespace Common
         public int InsertLocal(string sql)
         {
             return SqlHelper.ExecuteNonQuery(LOCAL, CommandType.Text, sql);
+        }
 
+        public DataSet QueryGG(string sql)
+        {
+            return SqlHelper.ExecuteDataset(GG, CommandType.Text, sql);
+        }
+
+        public int UpdateGG(string sql)
+        {
+            return SqlHelper.ExecuteNonQuery(GG, CommandType.Text, sql);
         }
     }
 }

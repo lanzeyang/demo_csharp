@@ -10,6 +10,7 @@ namespace demo_csharp.Workers
         public void Do()
         {
             FeeType waterFee = FeeType.DEPOSIT;
+            Console.WriteLine(string.Format("{0}", waterFee));
             Console.WriteLine(waterFee.ToString());
 
             Console.WriteLine(1.Equals(FeeType.WATER_FEE));
