@@ -86,6 +86,7 @@
     <Compile Include="Workers\AnalyseWechatFansAndUpdateWorker.cs" />
     <Compile Include="Workers\ArrayWorker.cs" />
     <Compile Include="Workers\BillCheckingWorker.cs" />
+    <Compile Include="Workers\BubbleSort.cs" />
     <Compile Include="Workers\CalculatorWorker.cs" />
     <Compile Include="Workers\DateTimeWorker.cs" />
     <Compile Include="Workers\DelegateWorker.cs" />
