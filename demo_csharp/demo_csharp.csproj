@@ -77,8 +77,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generic\Wechat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Resource\image\1022_2090909.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\image\1022_2090910.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resource\SwiftPayResponse.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -91,6 +98,7 @@
     <Compile Include="Workers\DateTimeWorker.cs" />
     <Compile Include="Workers\DelegateWorker.cs" />
     <Compile Include="Workers\EnumWorker.cs" />
+    <Compile Include="Workers\FileUploadWorker.cs" />
     <Compile Include="Workers\FindPeakElementWorker.cs" />
     <Compile Include="Workers\GroupByWorker.cs" />
     <Compile Include="Workers\HttpDownloadWorker.cs" />
@@ -114,6 +122,7 @@
     <Compile Include="Workers\SyncWechatFansDetailWorker.cs" />
     <Compile Include="Workers\SyncWechatFansWorker.cs" />
     <Compile Include="Workers\ThreeSumWorker.cs" />
+    <Compile Include="Workers\ToolWorker.cs" />
     <Compile Include="Workers\TupleWorker.cs" />
     <Compile Include="Workers\TwoSumWorker.cs" />
     <Compile Include="Workers\WhileLoopWorker.cs" />
@@ -138,6 +147,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="Resource\image\config.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -157,6 +169,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

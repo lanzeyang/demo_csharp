@@ -1,25 +1,22 @@
-﻿using Common;
-using Common.HttpHelper;
-using demo_csharp.Workers.IWorkService;
+﻿using demo_csharp.Workers.IWorkService;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Configuration;
+using System.Data;
 using System.Text;
 
 namespace demo_csharp.Workers
 {
     //同步微信粉丝列表
-    public class SyncWechatFansWorker : IMasterWorker
+    public class SyncWechatFansWorker : Wechat, IMasterWorker
     {
-        private static string ACCESS_TOKEN = ConfigurationManager.AppSettings["AccessToken"];
-        private const string GET_FANS_LIST_API = "https://api.weixin.qq.com/cgi-bin/user/get?access_token={0}&next_openid={1}";
-        private static HttpHelper httpHelper = HttpHelper.CreateInstance();
-        private static MySqlHelper sqlHelper = MySqlHelper.CreateInstance();
-        private const string tableName = "WECHAT_FANS";
-
         public void Do()
         {
-            string nextOpenId = "start";
+            string nextOpenId = QueryLastestOpenId();
+            if (string.IsNullOrEmpty(nextOpenId))
+            {
+                nextOpenId = "start";
+            }
+
             while (!nextOpenId.Equals(string.Empty))
             {
                 if (nextOpenId.Equals("start"))
@@ -27,7 +24,7 @@ namespace demo_csharp.Workers
                     nextOpenId = string.Empty;
                 }
 
-                string requestApi = string.Format(GET_FANS_LIST_API, ACCESS_TOKEN, nextOpenId);
+                string requestApi = string.Format(GET_FANS_LIST_API, FetchAccessToken(), nextOpenId);
                 byte[] byteResult = httpHelper.DoGetByte(requestApi).Result;
                 string stringResult = Encoding.UTF8.GetString(byteResult);
 
@@ -75,13 +72,28 @@ namespace demo_csharp.Workers
         private void AddData(JArray openIdArray, int startIndex, int length)
         {
             StringBuilder sqlCommand = new StringBuilder(500);
-            sqlCommand.Append("INSERT INTO ").Append(tableName).Append("(OpenId) VALUES");
+            sqlCommand.Append("INSERT INTO ").Append(TABLE_NAME).Append("(OpenId) VALUES");
             for (int index = startIndex; index < startIndex + length; index++)
             {
                 sqlCommand.Append("('").Append(openIdArray[index].ToString()).Append("'),");
             }
             Console.WriteLine(sqlCommand.ToString().Trim(','));
             sqlHelper.Insert(sqlCommand.ToString().Trim(','));
+        }       
+
+        private string QueryLastestOpenId()
+        {
+            StringBuilder sqlCommand = new StringBuilder(100);
+            sqlCommand.Append("SELECT TOP 1 OpenId FROM ").Append(TABLE_NAME).Append(" ORDER BY Id DESC");
+
+            DataSet queryDataSet = sqlHelper.Query(sqlCommand.ToString());
+
+            if (null == queryDataSet || null == queryDataSet.Tables || queryDataSet.Tables.Count.Equals(0) || queryDataSet.Tables[0].Rows.Count.Equals(0))
+            {
+                return string.Empty;
+            }
+
+            return queryDataSet.Tables[0].Rows[0]["OpenId"].ToString();
         }
     }
 }

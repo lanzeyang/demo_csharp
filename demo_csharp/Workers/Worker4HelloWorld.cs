@@ -1,5 +1,6 @@
 ﻿using demo_csharp.Workers.IWorkService;
 using System;
+using System.Collections.Generic;
 
 namespace demo_csharp.Workers
 {
@@ -10,6 +11,8 @@ namespace demo_csharp.Workers
     {
         public void Do()
         {
+            List<int> ids = new List<int>();
+            Console.WriteLine(string.Join(",", ids));
             Console.WriteLine("Hello World");
         }
     }

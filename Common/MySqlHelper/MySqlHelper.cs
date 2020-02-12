@@ -4,14 +4,14 @@ using System.Data;
 
 namespace Common
 {
+    /// <summary>
+    /// 数据库帮助类
+    /// </summary>
     public sealed class MySqlHelper
     {
         private static MySqlHelper instance = null;
         private static readonly object lockHelper = new object();
-        private static string DB_CONNECTION_STRING = ConfigurationManager.ConnectionStrings["GY_CSM"].ToString();
-        private static string FUSHUN_DB_CONNECTION_STRING = ConfigurationManager.ConnectionStrings["Fushun_Web"].ToString();
-        private static string LOCAL = ConfigurationManager.ConnectionStrings["LOCAL_DB"].ToString();
-        private static string GG = ConfigurationManager.ConnectionStrings["GG_CSM"].ToString();
+        private static string CSM_BM = ConfigurationManager.ConnectionStrings["PrimaryConnectionString"].ToString();
 
         private MySqlHelper() { }
 
@@ -31,34 +31,19 @@ namespace Common
             return instance;
         }
 
-        public DataSet Query(string sql)
+        public int Insert(string sql)
         {
-            return SqlHelper.ExecuteDataset(FUSHUN_DB_CONNECTION_STRING, CommandType.Text, sql);
+            return SqlHelper.ExecuteNonQuery(CSM_BM, CommandType.Text, sql);
         }
 
         public int Update(string sql)
         {
-            return SqlHelper.ExecuteNonQuery(FUSHUN_DB_CONNECTION_STRING, CommandType.Text, sql);
+            return SqlHelper.ExecuteNonQuery(CSM_BM, CommandType.Text, sql);
         }
 
-        public int Insert(string sql)
+        public DataSet Query(string sql)
         {
-            return SqlHelper.ExecuteNonQuery(GG, CommandType.Text, sql);
-        }
-
-        public int InsertLocal(string sql)
-        {
-            return SqlHelper.ExecuteNonQuery(LOCAL, CommandType.Text, sql);
-        }
-
-        public DataSet QueryGG(string sql)
-        {
-            return SqlHelper.ExecuteDataset(GG, CommandType.Text, sql);
-        }
-
-        public int UpdateGG(string sql)
-        {
-            return SqlHelper.ExecuteNonQuery(GG, CommandType.Text, sql);
+            return SqlHelper.ExecuteDataset(CSM_BM, CommandType.Text, sql);
         }
     }
 }

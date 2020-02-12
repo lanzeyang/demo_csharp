@@ -15,13 +15,27 @@ namespace demo_csharp.Workers
 
         public void Do()
         {
+            /* --可以通过SQL实现 （有版本限制）
+              UPDATE [CSM_BM_REPORT].[dbo].[WECHAT_FANS]
+              SET NICKNAME = JSON_VALUE([FansDetail], '$.nickname'),
+              SEX = JSON_VALUE([FansDetail], '$.sex'),
+              language = JSON_VALUE([FansDetail], '$.language'),
+              city = JSON_VALUE([FansDetail], '$.city'),
+              province =  JSON_VALUE([FansDetail], '$.province'),
+              country = JSON_VALUE([FansDetail], '$.country'),
+              HEAD_IMG_URL = JSON_VALUE([FansDetail], '$.headimgurl'),
+              subscribe_time =   DATEADD(SECOND, CAST(JSON_VALUE([FansDetail], '$.subscribe_time') AS INT), '1970-01-01'),
+              UpdateTime = GETDATE()
+              WHERE NICKNAME IS NULL 
+            */
+
             bool dataProcessed = false;
             while (!dataProcessed)
             {
                 StringBuilder queryCommand = new StringBuilder(100);
                 queryCommand.Append("SELECT TOP 200 FansDetail FROM WECHAT_FANS WHERE NICKNAME IS NULL ORDER BY ID ASC");
 
-                DataSet fansDetails = sqlHelper.QueryGG(queryCommand.ToString());
+                DataSet fansDetails = sqlHelper.Query(queryCommand.ToString());
                 if (null == fansDetails || null == fansDetails.Tables || fansDetails.Tables.Count.Equals(0))
                 {
                     dataProcessed = true;
@@ -60,7 +74,7 @@ namespace demo_csharp.Workers
 
                 Console.WriteLine(updateCommand.ToString());
 
-                sqlHelper.UpdateGG(updateCommand.ToString());
+                sqlHelper.Update(updateCommand.ToString());
             }
         }
     }
