@@ -12,6 +12,9 @@ namespace demo_csharp.Workers
 
         public void Do()
         {
+            TestAnalyseFileName();
+            return;
+
             List<Student> students = new List<Student>();
             students.Add(new Student { Name = "lianzeyang", Gender = "male" });
             students.Add(new Student { Name = "zhangsan", Gender = "male" });
@@ -151,6 +154,23 @@ namespace demo_csharp.Workers
             }
 
             return result;
+        }
+
+        public void TestAnalyseFileName()
+        {
+            string fileName = "20190813_waterfee_SELF_HELP_SCAN_PAY.txt";
+
+            int currentIndex = 0;
+            string date = fileName.Substring(currentIndex, 8);
+            Console.WriteLine(date);
+
+            currentIndex += date.Length + 1;
+            string feeType = fileName.Substring(currentIndex, fileName.IndexOf('_', currentIndex) - currentIndex);
+            Console.WriteLine(feeType);
+
+            currentIndex += feeType.Length + 1;
+            string mchId = fileName.Substring(currentIndex, fileName.IndexOf('.') - currentIndex);
+            Console.WriteLine(mchId);
         }
     }
 }

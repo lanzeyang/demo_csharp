@@ -8,11 +8,12 @@ namespace demo_csharp.Workers
     {
         public void Do()
         {
-            Regex regx = new Regex(@"^\d{4}(0[1-9]|1[0-2])\d{2}$");
-            Console.WriteLine(regx.IsMatch("20180149"));
-            Console.WriteLine(regx.IsMatch("201802"));
-            Console.WriteLine(regx.IsMatch("201803"));
-            Console.WriteLine(regx.IsMatch("201804"));
+            Regex regx = new Regex(@"^3|3\#\w*$");
+            Console.WriteLine(regx.IsMatch("1"));
+            Console.WriteLine(regx.IsMatch("3"));
+            Console.WriteLine(regx.IsMatch("3#123456"));
+            Console.WriteLine("3#123456".Substring(2));
+            Console.WriteLine(regx.IsMatch("4"));
             Console.WriteLine(regx.IsMatch("201805"));
             Console.WriteLine(regx.IsMatch("201806"));
             Console.WriteLine(regx.IsMatch("201807"));

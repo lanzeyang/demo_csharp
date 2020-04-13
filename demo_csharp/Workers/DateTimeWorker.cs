@@ -8,6 +8,9 @@ namespace demo_csharp.Workers
     {
         public void Do()
         {
+            Console.WriteLine(CompareTimeSize(DateTime.Now, DateTime.Now.AddMinutes(-8)).TotalMinutes);
+            return;
+
             string year = DateTime.Now.ToString("yyyy");
             string month = DateTime.Now.ToString("MM");
             string day = DateTime.Now.ToString("dd");
@@ -48,6 +51,14 @@ namespace demo_csharp.Workers
             long ticksFrom19700101 = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).Ticks;
 
             Console.WriteLine((DateTime.Now.ToUniversalTime().Ticks - ticksFrom19700101) / 10000);
+        }
+
+        public TimeSpan CompareTimeSize(DateTime dt1, DateTime dt2)
+        {
+            TimeSpan ts1 = new TimeSpan(dt1.Ticks);
+            TimeSpan ts2 = new TimeSpan(dt2.Ticks);
+            TimeSpan ts3 = ts1.Subtract(ts2).Duration();
+            return ts3;
         }
     }
 }
