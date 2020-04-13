@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplyFileInfo.cs" />
+    <Compile Include="Customer\CustomerPayInfo.cs" />
+    <Compile Include="Customer\CustomerServiceResult.cs" />
     <Compile Include="CustomisedAttribute\Length.cs" />
     <Compile Include="Enum\FeeType.cs" />
     <Compile Include="Enum\MeterOrderType.cs" />

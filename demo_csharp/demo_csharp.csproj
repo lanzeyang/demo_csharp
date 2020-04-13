@@ -90,11 +90,17 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Compile Include="Service References\CustomerService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Workers\AnalyseWechatFansAndUpdateWorker.cs" />
     <Compile Include="Workers\ArrayWorker.cs" />
     <Compile Include="Workers\BillCheckingWorker.cs" />
     <Compile Include="Workers\BubbleSort.cs" />
     <Compile Include="Workers\CalculatorWorker.cs" />
+    <Compile Include="Workers\CustomerServiceWorker.cs" />
     <Compile Include="Workers\DateTimeWorker.cs" />
     <Compile Include="Workers\DelegateWorker.cs" />
     <Compile Include="Workers\EnumWorker.cs" />
@@ -129,6 +135,12 @@
     <Compile Include="Workers\Worker4HelloJack.cs" />
     <Compile Include="Workers\Worker4HelloWorld.cs" />
     <Compile Include="Workers\XMLWorker.cs" />
+    <None Include="Service References\CustomerService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CustomerService\configuration.svcinfo" />
+    <None Include="Service References\CustomerService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -150,6 +162,7 @@
     <None Include="Resource\image\config.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Service References\CustomerService\ICustomerService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -169,7 +182,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CustomerService\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
