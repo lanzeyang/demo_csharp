@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyPathHelper\AssemblyPathHelper.cs" />
+    <Compile Include="HashHelper\HashHelper.cs" />
     <Compile Include="HexHelper\HexHelper.cs" />
     <Compile Include="HttpHelper\HttpHelper.cs" />
     <Compile Include="ImageUploader\FushunImageIUploader.cs" />

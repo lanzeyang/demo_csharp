@@ -12,6 +12,10 @@ namespace demo_csharp.Workers
 
         public void Do()
         {
+            string guid = Guid.NewGuid().ToString().Replace("-", "");
+            Console.WriteLine(guid);
+            return;
+
             TestAnalyseFileName();
             return;
 

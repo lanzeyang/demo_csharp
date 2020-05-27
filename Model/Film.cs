@@ -9,7 +9,6 @@ namespace Model
     {
         public string Name { get; set; }
         public int Year { get; set; }
-        public DateTime now { get; set; }
 
         public Film Clone()
         {

@@ -58,6 +58,7 @@
     <Compile Include="Socket\BillCheckingSummary.cs" />
     <Compile Include="Socket\BillDetail.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="WaterFee.cs" />
     <Compile Include="WxLifePay\Generic\BaseHead.cs" />
     <Compile Include="WxLifePay\Generic\BaseInfo.cs" />
     <Compile Include="WxLifePay\Order\Order.cs" />

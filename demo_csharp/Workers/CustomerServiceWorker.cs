@@ -10,7 +10,7 @@ namespace demo_csharp.Workers
         public void Do()
         {
             CustomerService.CustomerServicePortTypeClient client = new CustomerService.CustomerServicePortTypeClient();
-            string result = client.QueryInfo("100194049");
+            string result = client.QueryPayInfo("100194049");
 
             CustomerServiceResult customerResult = JsonConvert.DeserializeObject<CustomerServiceResult>(result);
 

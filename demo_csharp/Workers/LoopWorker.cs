@@ -7,12 +7,10 @@ namespace demo_csharp.Workers
     {
         public void Do()
         {
-            int tradeNo = 0;
-            for (int index = 0; index < 100; index++)
+            int n = 20;
+            for (int i = 0; i < n; n--)
             {
-                Console.WriteLine(index);
-                tradeNo++;
-                Console.WriteLine(tradeNo);
+                Console.WriteLine("-");
             }
         }
     }

@@ -17,11 +17,27 @@ namespace demo_csharp.CustomerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="out")]
-        string QueryInfo(string CustomerId);
+        string QueryPayInfo(string CustomerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="out")]
-        System.Threading.Tasks.Task<string> QueryInfoAsync(string CustomerId);
+        System.Threading.Tasks.Task<string> QueryPayInfoAsync(string CustomerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="out")]
+        string QueryCardById(string CustomerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="out")]
+        System.Threading.Tasks.Task<string> QueryCardByIdAsync(string CustomerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="out")]
+        string QueryCards(string queryType, string queryParam1, string queryParam2, string queryParam3);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="out")]
+        System.Threading.Tasks.Task<string> QueryCardsAsync(string queryType, string queryParam1, string queryParam2, string queryParam3);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -51,12 +67,28 @@ namespace demo_csharp.CustomerService {
                 base(binding, remoteAddress) {
         }
         
-        public string QueryInfo(string CustomerId) {
-            return base.Channel.QueryInfo(CustomerId);
+        public string QueryPayInfo(string CustomerId) {
+            return base.Channel.QueryPayInfo(CustomerId);
         }
         
-        public System.Threading.Tasks.Task<string> QueryInfoAsync(string CustomerId) {
-            return base.Channel.QueryInfoAsync(CustomerId);
+        public System.Threading.Tasks.Task<string> QueryPayInfoAsync(string CustomerId) {
+            return base.Channel.QueryPayInfoAsync(CustomerId);
+        }
+        
+        public string QueryCardById(string CustomerId) {
+            return base.Channel.QueryCardById(CustomerId);
+        }
+        
+        public System.Threading.Tasks.Task<string> QueryCardByIdAsync(string CustomerId) {
+            return base.Channel.QueryCardByIdAsync(CustomerId);
+        }
+        
+        public string QueryCards(string queryType, string queryParam1, string queryParam2, string queryParam3) {
+            return base.Channel.QueryCards(queryType, queryParam1, queryParam2, queryParam3);
+        }
+        
+        public System.Threading.Tasks.Task<string> QueryCardsAsync(string queryType, string queryParam1, string queryParam2, string queryParam3) {
+            return base.Channel.QueryCardsAsync(queryType, queryParam1, queryParam2, queryParam3);
         }
     }
 }

@@ -25,11 +25,11 @@ namespace demo_csharp.Workers
 
         public void Do()
         {
-            //SaySth<int>(sayHi, 1);
-            //SaySth<string>(sayHello, string.Empty);
+            SaySth<int>(sayHi, 1);
+            SaySth<string>(sayHello, string.Empty);
 
-            //Console.WriteLine(SaySth(returnHello, 1));
-            //Console.WriteLine(SaySth(returnHi, "lianzeyang"));
+            Console.WriteLine(SaySth(returnHello, 1));
+            Console.WriteLine(SaySth(returnHi, "lianzeyang"));
             Add(add, 1);
         }
 

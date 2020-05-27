@@ -2,14 +2,45 @@
 <wsdl:definitions xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:tns="http://service.xsd.com" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" targetNamespace="http://service.xsd.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.xsd.com">
-      <xsd:element name="QueryInfo">
+      <xsd:element name="QueryPayInfo">
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element minOccurs="1" maxOccurs="1" name="CustomerId" nillable="true" type="xsd:string" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="QueryInfoResponse">
+      <xsd:element name="QueryPayInfoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="QueryCardById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CustomerId" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="QueryCardByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="QueryCards">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="queryType" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="queryParam1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="queryParam2" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="queryParam3" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="QueryCardsResponse">
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
@@ -18,26 +49,64 @@
       </xsd:element>
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="QueryInfoResponse">
-    <wsdl:part name="parameters" element="tns:QueryInfoResponse" />
+  <wsdl:message name="QueryCardByIdResponse">
+    <wsdl:part name="parameters" element="tns:QueryCardByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="QueryInfoRequest">
-    <wsdl:part name="parameters" element="tns:QueryInfo" />
+  <wsdl:message name="QueryCardByIdRequest">
+    <wsdl:part name="parameters" element="tns:QueryCardById" />
+  </wsdl:message>
+  <wsdl:message name="QueryPayInfoResponse">
+    <wsdl:part name="parameters" element="tns:QueryPayInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryCardsResponse">
+    <wsdl:part name="parameters" element="tns:QueryCardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryCardsRequest">
+    <wsdl:part name="parameters" element="tns:QueryCards" />
+  </wsdl:message>
+  <wsdl:message name="QueryPayInfoRequest">
+    <wsdl:part name="parameters" element="tns:QueryPayInfo" />
   </wsdl:message>
   <wsdl:portType name="ICustomerServicePortType">
-    <wsdl:operation name="QueryInfo">
-      <wsdl:input name="QueryInfoRequest" message="tns:QueryInfoRequest" />
-      <wsdl:output name="QueryInfoResponse" message="tns:QueryInfoResponse" />
+    <wsdl:operation name="QueryPayInfo">
+      <wsdl:input name="QueryPayInfoRequest" message="tns:QueryPayInfoRequest" />
+      <wsdl:output name="QueryPayInfoResponse" message="tns:QueryPayInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryCardById">
+      <wsdl:input name="QueryCardByIdRequest" message="tns:QueryCardByIdRequest" />
+      <wsdl:output name="QueryCardByIdResponse" message="tns:QueryCardByIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryCards">
+      <wsdl:input name="QueryCardsRequest" message="tns:QueryCardsRequest" />
+      <wsdl:output name="QueryCardsResponse" message="tns:QueryCardsResponse" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ICustomerServiceHttpBinding" type="tns:ICustomerServicePortType">
     <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="QueryInfo">
+    <wsdl:operation name="QueryPayInfo">
       <wsdlsoap:operation soapAction="" />
-      <wsdl:input name="QueryInfoRequest">
+      <wsdl:input name="QueryPayInfoRequest">
         <wsdlsoap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="QueryInfoResponse">
+      <wsdl:output name="QueryPayInfoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCardById">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="QueryCardByIdRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="QueryCardByIdResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCards">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="QueryCardsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="QueryCardsResponse">
         <wsdlsoap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

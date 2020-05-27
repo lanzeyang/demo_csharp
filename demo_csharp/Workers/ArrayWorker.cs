@@ -1,4 +1,6 @@
 ﻿using demo_csharp.Workers.IWorkService;
+using Model;
+using Newtonsoft.Json;
 using System;
 
 namespace demo_csharp.Workers
@@ -14,6 +16,23 @@ namespace demo_csharp.Workers
             Array.Copy(source, 1, result, 0, source.Length - 1);
 
             Console.WriteLine(result);
+
+            Film[] films = new Film[2];
+            films[0] = new Film
+            {
+                Name = "Titanic",
+                Year = 1997,
+
+            };
+
+            films[1] = new Film
+            {
+                Name = "Avatar",
+                Year = 2009
+            };
+
+            string filmJson = JsonConvert.SerializeObject(films);
+            Console.WriteLine(filmJson);
         }
     }
 }
