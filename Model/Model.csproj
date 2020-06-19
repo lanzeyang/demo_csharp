@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +48,8 @@
     <Compile Include="Enum\FeeType.cs" />
     <Compile Include="Enum\MeterOrderType.cs" />
     <Compile Include="Film.cs" />
+    <Compile Include="Product\Order.cs" />
+    <Compile Include="Product\Product.cs" />
     <Compile Include="Socket\Arreage.cs" />
     <Compile Include="CustomisedAttribute\IgnoreAttribute.cs" />
     <Compile Include="CustomisedAttribute\SectionAttribute.cs" />
