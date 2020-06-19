@@ -1,11 +1,9 @@
 ﻿using demo_csharp.Workers.IWorkService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
+using System;
 
 namespace demo_csharp.Workers
 {
@@ -23,6 +21,17 @@ namespace demo_csharp.Workers
 
             Console.WriteLine(result.ToString());
             Console.WriteLine(result["xxx"]);
+
+            Film film = new Film();
+            film.Name = "流浪地球";
+            film.Year = 2019;
+
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
+
+            Console.WriteLine(JsonConvert.SerializeObject(film));
         }
     }
 }
