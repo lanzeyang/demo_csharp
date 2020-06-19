@@ -8,6 +8,9 @@ namespace demo_csharp.Workers
     {
         public void Do()
         {
+            Console.WriteLine(DateTime.Compare(DateTime.Now.AddMinutes(-1), DateTime.Now));
+            return;
+
             Console.WriteLine(CompareTimeSize(DateTime.Now, DateTime.Now.AddMinutes(-8)).TotalMinutes);
             return;
 

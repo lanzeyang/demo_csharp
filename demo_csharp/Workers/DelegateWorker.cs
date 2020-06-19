@@ -11,17 +11,16 @@ namespace demo_csharp.Workers
     {
         private delegate void MethodDelegate(int x, int y);
         private static MethodDelegate method;
-        private static Func<string, int> returnLength = (text) => text.Length;
+
+        private static Func<string, int> returnLength = text => text.Length;
+        private static Func<int, string> returnHello = text => "Hello " + text;
+        private static Func<string, string> returnHi = text => "Hi " + text;
+        private static Func<int, int> add = value => value += 2;
+
         private static Action<string> sayHello = text => Console.WriteLine("Hello");
         private static Action<int> sayHi = text => Console.WriteLine("Hi");
 
-        private static Func<int, string> returnHello = text => "Hello " + text;
-        private static Func<string, string> returnHi = text => "Hi " + text;
-
-        private static Func<int, int> add = value =>
-        {
-            return value += 2;
-        };
+        private static Predicate<string> stringEmpty = text => string.IsNullOrEmpty(text);
 
         public void Do()
         {
@@ -30,7 +29,9 @@ namespace demo_csharp.Workers
 
             Console.WriteLine(SaySth(returnHello, 1));
             Console.WriteLine(SaySth(returnHi, "lianzeyang"));
-            Add(add, 1);
+            //Add(add, 1);
+
+            Console.WriteLine(stringEmpty(""));
         }
 
         /// <summary>

@@ -17,6 +17,8 @@ namespace demo_csharp.Workers
 
             TestHasValue(FeeType.DEPOSIT);
 
+            object temp = (FeeType)Enum.Parse(typeof(FeeType), "WATER_FEE");
+
             byte[] padZero = Encoding.UTF8.GetBytes("0");
             Console.WriteLine(padZero.Length);
             byte[] padSpace = Encoding.UTF8.GetBytes(" ");

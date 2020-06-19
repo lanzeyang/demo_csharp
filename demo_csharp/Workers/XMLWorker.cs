@@ -3,8 +3,11 @@ using demo_csharp.Workers.IWorkService;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace demo_csharp.Workers
 {
@@ -15,7 +18,26 @@ namespace demo_csharp.Workers
     {
         public void Do()
         {
-            AnalyseSwiftpassPayResponse();   
+            string xml = "<?xml version=\"1.0\" encoding=\"GBK\"?><RetData><RetCode>1</RetCode><RetMsg><![CDATA[单据生成发票时出现错误！红字开票金额-27.5大于可冲红金额0.0]]></RetMsg></RetData>";
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml);
+
+            XmlNode firstChild = doc.ChildNodes[1];
+            if (firstChild.HasChildNodes)
+            {
+                Console.WriteLine(firstChild.ChildNodes.Item(0).InnerXml);
+                Console.WriteLine(firstChild.ChildNodes.Item(1).InnerXml);
+
+                //foreach (XmlNode node in firstChild.ChildNodes)
+                //{
+                //    Console.WriteLine("[node name]:{0}, [node xml]:{1}, [node text]:{2}", node.Name, node.InnerXml, node.InnerText);
+                //}
+            }
+
+            XDocument xmldoc = XDocument.Parse(xml);
+            string element = xmldoc.Root.Elements().FirstOrDefault(p => p.Name == "RetMsg").Value;
+
+            //AnalyseXMLFromFile();
         }
 
         private void AnalyseXMLFromFile()
@@ -41,7 +63,7 @@ namespace demo_csharp.Workers
         }
 
         private void AnalyseSwiftpassPayResponse()
-        { 
+        {
             string filePath = AssemblyPathHelper.GetAssemblyPath() + "Resource/SwiftPayResponse.xml";
 
             if (!File.Exists(filePath))
