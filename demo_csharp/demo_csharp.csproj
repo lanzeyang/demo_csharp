@@ -113,6 +113,7 @@
     <Compile Include="Workers\DateTimeWorker.cs" />
     <Compile Include="Workers\DelegateWorker.cs" />
     <Compile Include="Workers\EnumWorker.cs" />
+    <Compile Include="Workers\ExceptionWorker.cs" />
     <Compile Include="Workers\FileUploadWorker.cs" />
     <Compile Include="Workers\FindPeakElementWorker.cs" />
     <Compile Include="Workers\GroupByWorker.cs" />
@@ -120,6 +121,11 @@
     <Compile Include="Workers\ImportChangeOwnerShipWorker.cs" />
     <Compile Include="Workers\ImportVATInfoWorker.cs" />
     <Compile Include="Workers\EncodingWorker.cs" />
+    <Compile Include="Workers\InterfaceTest\ChristmasGreet.cs" />
+    <Compile Include="Workers\InterfaceTest\GreetWorker.cs" />
+    <Compile Include="Workers\InterfaceTest\IGreet.cs" />
+    <Compile Include="Workers\InterfaceTest\NewYearGreet.cs" />
+    <Compile Include="Workers\InterfaceTest\ThanksGivingGreet.cs" />
     <Compile Include="Workers\IntReverseWorker.cs" />
     <Compile Include="Workers\IsPalindromeWorker.cs" />
     <Compile Include="Workers\IWorkService\IMasterWorker.cs" />
