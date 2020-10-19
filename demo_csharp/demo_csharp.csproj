@@ -121,6 +121,7 @@
     <Compile Include="Workers\DelegateWorker.cs" />
     <Compile Include="Workers\EnumWorker.cs" />
     <Compile Include="Workers\ExceptionWorker.cs" />
+    <Compile Include="Workers\ExpressionWorker.cs" />
     <Compile Include="Workers\FileUploadHelper.cs" />
     <Compile Include="Workers\FileUploadWorker.cs" />
     <Compile Include="Workers\FindPeakElementWorker.cs" />

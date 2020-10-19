@@ -50,11 +50,14 @@
     <Compile Include="Customer\CustomerPayInfo.cs" />
     <Compile Include="Customer\CustomerServiceResult.cs" />
     <Compile Include="CustomisedAttribute\Length.cs" />
+    <Compile Include="Enum\AlgorithmType.cs" />
     <Compile Include="Enum\FeeType.cs" />
     <Compile Include="Enum\MeterOrderType.cs" />
     <Compile Include="Film.cs" />
     <Compile Include="Product\Order.cs" />
     <Compile Include="Product\Product.cs" />
+    <Compile Include="QuotaAlgorithm\Algorithm.cs" />
+    <Compile Include="QuotaAlgorithm\InfluencedFactors.cs" />
     <Compile Include="Socket\Arreage.cs" />
     <Compile Include="CustomisedAttribute\IgnoreAttribute.cs" />
     <Compile Include="CustomisedAttribute\SectionAttribute.cs" />
