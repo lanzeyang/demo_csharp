@@ -31,7 +31,7 @@ namespace demo_csharp.Workers
                 {
                     Name = "天数",
                     AlgorithmIndex = 1,
-                    AlgorithmType = Model.Enum.AlgorithmType.NONE,
+                    AlgorithmType = AlgorithmType.NONE,
                     PrimaryFactorValue = 0
                 },
                 new InfluencedFactors
@@ -161,7 +161,7 @@ namespace demo_csharp.Workers
 
             factor1.Children.AddRange(childFactors);
 
-            Model.Enum.AlgorithmType algorithmType = AlgorithmType.NONE;
+            AlgorithmType algorithmType = AlgorithmType.NONE;
             Expression factor = CalculateQuota(factor1, out algorithmType);
             Console.WriteLine(factor);
 
