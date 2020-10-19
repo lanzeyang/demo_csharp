@@ -25,35 +25,29 @@ namespace demo_csharp.Workers
                 PrimaryFactorValue = null
             };
 
-            List<InfluencedFactors> childFactors = new List<InfluencedFactors>();
-            childFactors.Add(
+            List<InfluencedFactors> childFactors = new List<InfluencedFactors>()
+            {
                 new InfluencedFactors
                 {
                     Name = "天数",
                     AlgorithmIndex = 1,
                     AlgorithmType = Model.Enum.AlgorithmType.NONE,
                     PrimaryFactorValue = 0
-                });
-
-            childFactors.Add(
+                },
                 new InfluencedFactors
                 {
                     Name = "天数",
                     AlgorithmIndex = 2,
                     AlgorithmType = AlgorithmType.ADD,
                     PrimaryFactorValue = 10
-                });
-
-            childFactors.Add(
+                },
                 new InfluencedFactors
                 {
                     Name = "天数",
                     AlgorithmIndex = 3,
                     AlgorithmType = AlgorithmType.SUBTRACT,
                     PrimaryFactorValue = 5
-                });
-
-            childFactors.Add(
+                },
                 new InfluencedFactors
                 {
                     Name = "天数",
@@ -74,7 +68,7 @@ namespace demo_csharp.Workers
                             Name = "天数",
                             AlgorithmIndex = 1,
                             AlgorithmType = AlgorithmType.ADD,
-                            PrimaryFactorValue = 0 ,
+                            PrimaryFactorValue = 0,
                             Children = new List<InfluencedFactors>
                             {
                                 new InfluencedFactors
@@ -90,16 +84,18 @@ namespace demo_csharp.Workers
                                     AlgorithmIndex = 1,
                                     AlgorithmType = AlgorithmType.DIVIDE,
                                     PrimaryFactorValue = 3
-                                },
+                                }
                             }
                         }
                     }
-                });
+                }
+            };
 
             factor1.Children.AddRange(childFactors);
 
             Model.Enum.AlgorithmType algorithmType = AlgorithmType.NONE;
             Expression factor = CalculateQuota(factor1, out algorithmType);
+            Console.WriteLine(factor);
 
             Func<decimal> factorAction = Expression.Lambda<Func<decimal>>(factor).Compile();
             Console.WriteLine(factorAction());
