@@ -46,7 +46,75 @@ namespace demo_csharp.Workers
                     Name = "天数",
                     AlgorithmIndex = 3,
                     AlgorithmType = AlgorithmType.SUBTRACT,
-                    PrimaryFactorValue = 5
+                    PrimaryFactorValue = 5,
+                    Children = new List<InfluencedFactors>
+                    {
+                        new InfluencedFactors
+                        {
+                            Name = "天数",
+                            AlgorithmIndex = 1,
+                            AlgorithmType = AlgorithmType.NONE,
+                            PrimaryFactorValue = 10
+                        },
+                        new InfluencedFactors
+                        {
+                            Name = "天数",
+                            AlgorithmIndex = 1,
+                            AlgorithmType = AlgorithmType.DIVIDE,
+                            PrimaryFactorValue = 0,
+                            Children = new List<InfluencedFactors>
+                            {
+                                new InfluencedFactors
+                                {
+                                    Name = "天数",
+                                    AlgorithmIndex = 1,
+                                    AlgorithmType = AlgorithmType.NONE,
+                                    PrimaryFactorValue = 3
+                                },
+                                new InfluencedFactors
+                                {
+                                    Name = "天数",
+                                    AlgorithmIndex = 1,
+                                    AlgorithmType = AlgorithmType.SUBTRACT,
+                                    PrimaryFactorValue = 0,
+                                    Children = new List<InfluencedFactors>
+                                    {
+                                        new InfluencedFactors
+                                        {
+                                            Name = "天数",
+                                            AlgorithmIndex = 1,
+                                            AlgorithmType = AlgorithmType.NONE,
+                                            PrimaryFactorValue = 3
+                                        },
+                                        new InfluencedFactors
+                                        {
+                                            Name = "天数",
+                                            AlgorithmIndex = 1,
+                                            AlgorithmType = AlgorithmType.DIVIDE,
+                                            PrimaryFactorValue = 0,
+                                            Children = new List<InfluencedFactors>
+                                            {
+                                                new InfluencedFactors
+                                                {
+                                                    Name = "天数",
+                                                    AlgorithmIndex = 1,
+                                                    AlgorithmType = AlgorithmType.NONE,
+                                                    PrimaryFactorValue = 6
+                                                },
+                                                new InfluencedFactors
+                                                {
+                                                    Name = "天数",
+                                                    AlgorithmIndex = 1,
+                                                    AlgorithmType = AlgorithmType.DIVIDE,
+                                                    PrimaryFactorValue = 2
+                                                },
+                                            }
+                                        },
+                                    }
+                                },
+                            }
+                        },
+                    }
                 },
                 new InfluencedFactors
                 {
