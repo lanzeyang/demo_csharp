@@ -4,6 +4,7 @@ using Common.HashHelper;
 using System.Collections.Generic;
 using Model;
 using System.Linq;
+using System.Text;
 
 namespace demo_csharp.Workers
 {
@@ -31,7 +32,6 @@ namespace demo_csharp.Workers
             //string file2 = filePathPrefix + "hash_test_2.txt";
             string file2 = filePathPrefix + "\\image\\1022_2090910.png";
 
-
             Console.WriteLine(file1);
             Console.WriteLine(file2);
 
@@ -43,6 +43,21 @@ namespace demo_csharp.Workers
             byte[] file2Byte = ReadFile(file2);
             string file2MD5 = hashHelper.ComputeMD5(file2Byte);
             Console.WriteLine(file2MD5);
+
+            Student xiaoming = new Student()
+            {
+                Gender = "male",
+                Name = "xiaoming"
+            };
+
+            byte[] byte4Object = Encoding.UTF8.GetBytes(xiaoming.ToString());
+            string objectMD5 = hashHelper.ComputeMD5(byte4Object);
+            Console.WriteLine(objectMD5);
+
+            xiaoming.Name = "xiaoming";
+            byte4Object = Encoding.UTF8.GetBytes(xiaoming.ToString());
+            objectMD5 = hashHelper.ComputeMD5(byte4Object);
+            Console.WriteLine(objectMD5);
         }
 
         private byte[] ReadFile(string path)

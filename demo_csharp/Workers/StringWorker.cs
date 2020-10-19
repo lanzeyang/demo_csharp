@@ -12,7 +12,10 @@ namespace demo_csharp.Workers
 
         public void Do()
         {
-            string guid = Guid.NewGuid().ToString().Replace("-", "");
+            bool good = new bool();
+            Console.WriteLine(good);
+
+            string guid = Guid.NewGuid().ToString();
             Console.WriteLine(guid);
             return;
 

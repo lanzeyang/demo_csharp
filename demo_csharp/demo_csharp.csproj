@@ -70,6 +70,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -99,7 +100,13 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Compile Include="Resource\WZ_SMS.cs" />
     <Compile Include="Service References\CustomerService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SMS_SERVICE\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -114,6 +121,7 @@
     <Compile Include="Workers\DelegateWorker.cs" />
     <Compile Include="Workers\EnumWorker.cs" />
     <Compile Include="Workers\ExceptionWorker.cs" />
+    <Compile Include="Workers\FileUploadHelper.cs" />
     <Compile Include="Workers\FileUploadWorker.cs" />
     <Compile Include="Workers\FindPeakElementWorker.cs" />
     <Compile Include="Workers\GroupByWorker.cs" />
@@ -130,6 +138,8 @@
     <Compile Include="Workers\IsPalindromeWorker.cs" />
     <Compile Include="Workers\IWorkService\IMasterWorker.cs" />
     <Compile Include="Workers\ImportWechatBindRelationWorker.cs" />
+    <Compile Include="Workers\PDFWorker.cs" />
+    <Compile Include="Workers\SMSWorker.cs" />
     <Compile Include="Workers\LinqWorker.cs" />
     <Compile Include="Workers\JSONWorker.cs" />
     <Compile Include="Workers\ListJsonWorker.cs" />
@@ -139,6 +149,7 @@
     <Compile Include="Workers\ParallelWorker.cs" />
     <Compile Include="Workers\RegxWorker.cs" />
     <Compile Include="Workers\SHA1Worker.cs" />
+    <Compile Include="Workers\SocketWorker.cs" />
     <Compile Include="Workers\StringWorker.cs" />
     <Compile Include="Workers\SwitchCaseWorker.cs" />
     <Compile Include="Workers\SyncWechatFansDetailWorker.cs" />
@@ -153,12 +164,40 @@
     <Compile Include="Workers\Worker4HelloJack.cs" />
     <Compile Include="Workers\Worker4HelloWorld.cs" />
     <Compile Include="Workers\XMLWorker.cs" />
+    <None Include="Service References\SMS_SERVICE\demo_csharp.SMS_SERVICE.AuditingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SMS_SERVICE\demo_csharp.SMS_SERVICE.Reply.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SMS_SERVICE\demo_csharp.SMS_SERVICE.ReplyConfirmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SMS_SERVICE\demo_csharp.SMS_SERVICE.ReplyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SMS_SERVICE\demo_csharp.SMS_SERVICE.ReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SMS_SERVICE\demo_csharp.SMS_SERVICE.SearchSmsNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SMS_SERVICE\demo_csharp.SMS_SERVICE.SmsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SMS_SERVICE\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\SMS_SERVICE\configuration.svcinfo" />
+    <None Include="Service References\SMS_SERVICE\configuration91.svcinfo" />
     <None Include="Service References\CustomerService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\CustomerService\configuration.svcinfo" />
     <None Include="Service References\CustomerService\configuration91.svcinfo" />
+    <None Include="Service References\SMS_SERVICE\Sms.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -205,6 +244,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\CustomerService\" />
+    <WCFMetadataStorage Include="Service References\SMS_SERVICE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

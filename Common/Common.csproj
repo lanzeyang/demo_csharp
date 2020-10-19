@@ -73,6 +73,7 @@
     <Compile Include="HexHelper\HexHelper.cs" />
     <Compile Include="HttpHelper\HttpHelper.cs" />
     <Compile Include="ImageUploader\FushunImageIUploader.cs" />
+    <Compile Include="MessageAnalysor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RSAHelper\RSAConverter.cs" />
     <Compile Include="RSAHelper\RSAHelper.cs" />

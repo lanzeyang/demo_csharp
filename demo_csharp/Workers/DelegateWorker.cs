@@ -9,6 +9,9 @@ namespace demo_csharp.Workers
 {
     public class DelegateWorker : IMasterWorker
     {
+        private delegate bool ValueEqual(string s1, string s2);
+        private static ValueEqual valueEqual;
+
         private delegate void MethodDelegate(int x, int y);
         private static MethodDelegate method;
 
@@ -24,6 +27,10 @@ namespace demo_csharp.Workers
 
         public void Do()
         {
+            TestValueEqualDelegate();
+
+            TestDelegate();
+
             SaySth<int>(sayHi, 1);
             SaySth<string>(sayHello, string.Empty);
 
@@ -32,6 +39,27 @@ namespace demo_csharp.Workers
             //Add(add, 1);
 
             Console.WriteLine(stringEmpty(""));
+        }
+
+        private void TestValueEqualDelegate()
+        {
+            valueEqual = new ValueEqual(StringEqual);
+            valueEqual += StringEqual2;
+
+            string s1 = "Freedom is not free";
+            string s2 = "Freedom is free";
+
+            valueEqual(s1, s2);
+        }
+
+        private bool StringEqual(string s1, string s2)
+        {
+            return s1.Equals(s2);
+        }
+
+        private bool StringEqual2(string s1, string s2)
+        {
+            return !s1.Equals(s2);
         }
 
         /// <summary>
@@ -66,14 +94,14 @@ namespace demo_csharp.Workers
 
             var films = new List<Film>
             {
-                    new Film{ Name = "Jaws",Year = 1975 },
-                    new Film{ Name = "Singing in the rain",Year = 1975 },
-                    new Film{ Name = "Some like it hot",Year = 1959 },
-                    new Film{ Name = "The Wizzard of oz",Year = 1939 },
-                    new Film{ Name = "It's a wonderful life",Year = 1946 },
-                    new Film{ Name = "American Beatify",Year = 1999 },
-                    new Film{ Name = "High Fidelity",Year = 2000 },
-                    new Film{ Name = "The usual suspect",Year = 1995 }
+                new Film{ Name = "Jaws",Year = 1975 },
+                new Film{ Name = "Singing in the rain",Year = 1975 },
+                new Film{ Name = "Some like it hot",Year = 1959 },
+                new Film{ Name = "The Wizzard of oz",Year = 1939 },
+                new Film{ Name = "It's a wonderful life",Year = 1946 },
+                new Film{ Name = "American Beatify",Year = 1999 },
+                new Film{ Name = "High Fidelity",Year = 2000 },
+                new Film{ Name = "The usual suspect",Year = 1995 }
             };
 
             Action<Film> print = film => Console.WriteLine("Name = {0}, Year = {1}", film.Name, film.Year);

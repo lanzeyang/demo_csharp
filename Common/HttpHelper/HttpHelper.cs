@@ -79,10 +79,12 @@ namespace Common.HttpHelper
             {
                 using (MultipartFormDataContent multipartFormDataContent = new MultipartFormDataContent())
                 {
-                    //StreamContent imageContent = new StreamContent(new MemoryStream(fileByte));
+                    multipartFormDataContent.Add(new StringContent("bf257785-6ae4-41b6-8a4a-a1b53a06ff55"), "serialNo");
+                    multipartFormDataContent.Add(new StringContent("0"), "serialNoType");
+                    multipartFormDataContent.Add(new StringContent("0"), "person");
+
                     var imageContent = new ByteArrayContent(fileByte);
-                    //imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse(CONTENT_TYPE_FORM_DATA);
-                    imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                    imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/png");
 
                     multipartFormDataContent.Add(imageContent, DEFAULT_FORM_NAME, fileName);
 
