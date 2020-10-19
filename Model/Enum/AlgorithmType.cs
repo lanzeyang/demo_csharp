@@ -13,7 +13,7 @@
         /// <summary>
         /// -
         /// </summary>
-        MINUS = 2,
+        SUBTRACT = 2,
         /// <summary>
         /// *
         /// </summary>
@@ -21,6 +21,6 @@
         /// <summary>
         /// /
         /// </summary>
-        DIVISION = 4
+        DIVIDE = 4
     }
 }

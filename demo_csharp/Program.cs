@@ -22,6 +22,7 @@ namespace demo_csharp
                 IUnityContainer unityContainer = UnityHelper.RegisterUnityContainer();
                 IMasterWorker worker = unityContainer.Resolve<IMasterWorker>(WORKER_ON_DUTY);
                 worker.Do();
+                Console.ReadKey();
             }
             catch (Exception e)
             {

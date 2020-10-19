@@ -3,8 +3,18 @@ using System.Collections.Generic;
 
 namespace Model.QuotaAlgorithm
 {
+    /// <summary>
+    /// 定额影响因素
+    /// </summary>
     public class InfluencedFactors
     {
+        #region Constructors
+        public InfluencedFactors()
+        {
+            Children = new List<InfluencedFactors>();
+        }
+        #endregion
+
         /// <summary>
         /// 主键
         /// </summary>
@@ -33,6 +43,6 @@ namespace Model.QuotaAlgorithm
         /// <summary>
         /// 子影响因素，如果有值则决定父级的PrimaryFactorValue值
         /// </summary>
-        public IEnumerable<InfluencedFactors> Children { get; set; }
+        public List<InfluencedFactors> Children { get; set; }
     }
 }
