@@ -1,4 +1,5 @@
-﻿using demo_csharp.Workers.IWorkService;
+﻿using demo_csharp.Generic;
+using demo_csharp.Workers.IWorkService;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,17 @@ namespace demo_csharp.Workers
 
         public void Do()
         {
+            string number = "1234567890";
+            BigNumber bigNum = new BigNumber(number);
+
+            string temp = bigNum.Add("5", "8");
+
+            Console.WriteLine(bigNum.ToString());
+
+            string s1 = "\"level\"";
+            Console.WriteLine(s1);
+            Console.WriteLine(s1.Replace("\"", ""));
+
             bool good = new bool();
             Console.WriteLine(good);
 

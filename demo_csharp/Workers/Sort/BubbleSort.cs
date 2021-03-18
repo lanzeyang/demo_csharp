@@ -1,9 +1,12 @@
 ﻿using demo_csharp.Workers.IWorkService;
 using System;
 
-namespace demo_csharp.Workers
+namespace demo_csharp.Workers.Sort
 {
-    public class BubbleSort : IMasterWorker
+    /// <summary>
+    /// 冒泡排序
+    /// </summary>
+    public class BubbleSort : SortBase, IMasterWorker
     {
         public void Do()
         {
@@ -109,30 +112,17 @@ namespace demo_csharp.Workers
                 {
                     if (chaosNumbers[index2] > chaosNumbers[index2 + 1])
                     {
-                        temp = chaosNumbers[index2];
-                        chaosNumbers[index2] = chaosNumbers[index2 + 1];
-                        chaosNumbers[index2 + 1] = temp;
+                        temp = chaosNumbers[index2 + 1];
+                        chaosNumbers[index2 + 1] = chaosNumbers[index2];
+                        chaosNumbers[index2] = temp;
                     }
 
-                    Console.WriteLine(string.Format("index1：{0}，index2：{1}", index1, index2));
                     PrintArray(chaosNumbers);
-                    Console.WriteLine();
                 }
             }
 
             Console.WriteLine("排序后的数据：");
-            foreach (int num in chaosNumbers)
-            {
-                Console.Write(num + " ");
-            }
-        }
-
-        private void PrintArray(int[] array)
-        {
-            foreach (int item in array)
-            {
-                Console.Write(item + " ");
-            }
+            PrintArray(chaosNumbers);
         }
     }
 }

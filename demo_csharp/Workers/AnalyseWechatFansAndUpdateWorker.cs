@@ -47,7 +47,19 @@ namespace demo_csharp.Workers
                 for (int index = 0; index < fansDetails.Tables[0].Rows.Count; index++)
                 {
                     JToken fansDetail = JToken.Parse(fansDetails.Tables[0].Rows[index]["FansDetail"].ToString());
+
+                    Console.WriteLine(fansDetails.Tables[0].Rows[index]["FansDetail"].ToString());
+
                     string openId = fansDetail["openid"].ToString();
+                    string subscribe = fansDetail["subscribe"].ToString();
+
+                    if (subscribe.Equals("0"))
+                    {
+                        updateCommand.Append("UPDATE WECHAT_FANS SET NICKNAME = '' ");
+                        updateCommand.Append("WHERE OPENID = '").Append(openId).Append("' ");
+                        continue;
+                    }
+
                     string nickName = fansDetail["nickname"].ToString();
                     string sex = fansDetail["sex"].ToString();
                     string language = fansDetail["language"].ToString();

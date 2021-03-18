@@ -9,10 +9,10 @@ namespace Model
     [DataContract]
     public class Film
     {
-        [DataMember(Name = "prop1")]
+        [DataMember(Name = "Name")]
         public string Name { get; set; }
 
-        [DataMember(Name = "prop2")]
+        [DataMember(Name = "Year")]
         public int Year { get; set; }
 
         public Film Clone()
